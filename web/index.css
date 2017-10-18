@@ -1,0 +1,9 @@
+html{
+	background:#eee;
+}
+.root+form{
+	padding:24px 0;
+}
+button{
+	margin-left:20px;
+}

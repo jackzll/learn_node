@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+	<div class="root">查询用户信息</div>
+	<form>
+		<label>
+			名字：<input type="text" name="username" placeholder="请输入用户名称"/> <button>提交</button>
+		</label>
+	</form>
+	<div id="info"></div>
+	<script src="./lib/jquery.js"></script>
+	<script>
+		$(function(){
+			$(document).on('click','.root',function(){
+				$(this).css('background','red');
+			})
+			$(document).on('click','button',function(e){
+				e.preventDefault();
+				$.ajax({
+					type:"POST",
+					url:"http://127.0.0.1:8081/userInfo/",
+					data:{
+						username:"jackzll"
+					},
+					dataType:"json",
+					success:function(data){
+						$('#info').html(`${data.name}`)
+					},
+					error:function(error){
+						error?console.log(error):null;
+					}
+				})
+			})
+		})
+
+	</script>
+</body>
+</html>
